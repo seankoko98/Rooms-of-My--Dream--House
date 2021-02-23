@@ -118,7 +118,7 @@ function draw() {
 //-- drawOne() will draw the image at index 0 from the array
 drawlivingRoom = function() {
    image(livingRoomAssets[0],width/2, height/2);
-   image(livingRoomAssets[1],92, 609);
+   image(livingRoomAssets[1],120, 609);
 }
 
 //-- drawTwo() will draw the image at index 1 from the array

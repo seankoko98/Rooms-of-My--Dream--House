@@ -74,7 +74,7 @@ function preload() {
 
   //bathroom images
   bathRoomAssets[0] = loadImage('assets/bathroom.png');
-  bathRoomAssets[1] = loadImage('assets/bathroom_toilet.png');
+  bathRoomAssets[1] = loadImage('assets/bathroom_tub.png');
  
   //garage images 
   garageAssets[0] = loadImage('assets/garage.png');

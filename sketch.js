@@ -31,8 +31,15 @@
 
 ***********************************************************************************/
 
-// Array of images
-var images = [];
+// image variables
+var livingRoomAssets = [];
+var bedRoomAssets = [];
+var officeAssets = [];
+var diningRoomAssets = [];
+var bathRoomAssets = [];
+var garageAssets = [];
+
+// instruction screen
 
 var instructions = []; 
 
@@ -49,12 +56,29 @@ var gTextOffset = 20;
 
 // load all images into an array
 function preload() {
-  images[0] = loadImage('assets/one.png');
-  images[1] = loadImage('assets/two.png');
-  images[2] = loadImage('assets/three.png');
-  images[3] = loadImage('assets/four.png');
-  images[4] = loadImage('assets/five.png');
-  images[5] = loadImage('assets/splash.png');
+  //living room images
+  livingRoomAssets[0] = loadImage('assets/livingroom.png');
+  livingRoomAssets[1] = loadImage('assets/livingroom_table.png');
+
+  //bedroom images 
+  bedRoomAssets[0] = loadImage('assets/bedroom.png');
+  bedRoomAssets[1] = loadImage('assets/bedroom_bed.png');
+
+  //office images
+  officeAssets[0] = loadImage('assets/office.png');
+  officeAssets[1] = loadImage('assets/office_lamp.png');
+
+  //dining room images
+  diningRoomAssets[0] = loadImage('assets/diningroom.png');
+  diningRoomAssets[1] = loadImage('assets/diningroom_table.png');
+
+  //bathroom images
+  bathRoomAssets[0] = loadImage('assets/bathroom.png');
+  bathRoomAssets[1] = loadImage('assets/bathroom_toilet.png');
+ 
+  //garage images 
+  garageAssets[0] = loadImage('assets/garage.png');
+  garageAssets[1] = loadImage('assets/garage_tesla.png');
 }
 
 
@@ -70,10 +94,10 @@ function loadInstructionsArray() {
 
 // Center drawing, drawFunction will be one for default
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1280, 720);
+
 // loading all arrays 
   loadInstructionsArray(); 
-
   midX = width/2;
   startY = 60;
 
@@ -83,25 +107,18 @@ function setup() {
   textSize(24);
 
   // set to one for startup
-  drawFunction = drawSplash;
+  drawFunction = drawlivingRoom;
 }
 
-// Very simple, sets the background color and calls your state machine function
+  //Very simple, sets the background color and calls your state machine function
 function draw() {
-  background(192);
-
-  // will call your state machine function
   drawFunction();
 }
 
-//========= TEMPLATE: modify these functions, INSIDE the function blocks only =========
-
 //-- drawOne() will draw the image at index 0 from the array
-drawOne = function() {
-   image(images[0],width/2, height/2);
-
-   fill(0,0,0);
-   text("relaxing", width/2, height - gTextOffset);
+drawlivingRoom = function() {
+   image(livingRoomAssets[0],width/2, height/2);
+   image(livingRoomAssets[1],92, 609);
 }
 
 //-- drawTwo() will draw the image at index 1 from the array

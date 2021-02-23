@@ -1,32 +1,10 @@
 /***********************************************************************************
-	SimpleStateMachine - TEMPLATE
-	by Scott Kildall
-
-	Template:
-
-	(1) Add your own PNG files in the assets folder. Make sure they match the names ***exactly*** of the existing PNGs.
-	(2) Add custom drawing code to drawOne(), drawTwo(), drawThree(), drawFour(), drawFive()
-	(3) You can add your own interfaces - keys, mouse events, etc in the Interfaces section
-
-	Also start your localhost before running this, otherwise no PNGs will display
-
-------------------------------------------------------------------------------------
-	The way it works — you don't need to know this for the template use
-	* array of images gets loaded at startup
-	* drawFunction is a VARIABLE that points to a function varible name
-	* drawOne(), drawTwo(), etc. are set to be functions.
-	* the the keys 1-5 will change the drawFunction variable
+	Rooms of My "Dream" House
+	by Sean Ko
 
 ------------------------------------------------------------------------------------
 	Notes:
-	- a more advanced state machine with use array-indexing for each of
-		images the draw functions, but this is just for illustrative purposes
-
-	- even more advanced will be to put the draw functions into an array, would
-		be helpful for randomizing, go to the next function, etc
-
-	- next step after that would be to put interfaces into an array that maps to
-		the functions
+	- this project includes arrays, state machines, and practice placing pngs in each state. 
 
 
 ***********************************************************************************/
@@ -94,7 +72,7 @@ function loadInstructionsArray() {
 
 // Center drawing, drawFunction will be one for default
 function setup() {
-  createCanvas(1280, 720);
+  createCanvas(1280, 800);
 
 // loading all arrays 
   loadInstructionsArray(); 
@@ -115,84 +93,61 @@ function draw() {
   drawFunction();
 }
 
-//-- drawOne() will draw the image at index 0 from the array
+//living room draw function
 drawlivingRoom = function() {
    image(livingRoomAssets[0],width/2, height/2);
-   image(livingRoomAssets[1],120, 609);
+   image(livingRoomAssets[1],280, 680);
 }
 
-//-- drawTwo() will draw the image at index 1 from the array
-drawTwo = function() {
-   image(images[1],width/2, height/2);
-
-   fill(240,120,0);
-   text("enlightening", width/2, height - gTextOffset);
+//bedroom draw function
+drawbedRoom = function() {
+   image(bedRoomAssets[0],width/2, height/2);
+   image(bedRoomAssets[1],871, 582);
 }
 
-//-- drawOne() will draw the image at index 2 from the array
-drawThree = function() {
-   image(images[2],width/2, height/2);
-
-   fill(40,230,120);
-   text("calm", width/2, height - gTextOffset);
+//office draw function
+drawOffice = function() {
+   image(officeAssets[0],width/2, height/2);
+   image(officeAssets[1],width/2, 100);
 }
 
-//-- drawOne() will draw the image at index 3 from the array
-drawFour = function() {
-   image(images[3],width/2, height/2);
-
-   fill(255,255,178);
-   text("cheerful", width/2, height - gTextOffset);
+//dining room draw function
+drawdiningRoom = function() {
+   image(diningRoomAssets[0],width/2, height/2);
+   image(diningRoomAssets[1], 550, 518);
 }
 
-//-- drawOne() will draw the image at index 4 from the array
-drawFive = function() {
-   image(images[4],width/2, height/2);
-
-   fill(230,50,50);
-   text("comforting", width/2, height - gTextOffset);
+//bathroom draw function
+drawbathRoom = function() {
+   image(bathRoomAssets[0],width/2, height/2);
+   image(bathRoomAssets[1],width/2, 660);
 }
 
-//-- drawSplash() will draw the image at index 4 from the array
-drawSplash = function() {
-   image(images[5],width/2, height/2);
+//garage draw function
+drawgarage = function() {
+   image(garageAssets[0],width/2, height/2);
+   image(garageAssets[1], 400, 550);
 }
-
-// this will display instructions screen
-drawInstructions = function() {
-  for( let i = 0; i < instructions.length; i++ ) {
-    fill(255); 
-    text( instructions[i], midX, startY + (i * lineHeight) )
-  }
-}
-
-
-// /
-
-// //========= TEMPLATE: add or change interface functions, as you like =========
 
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
   if( key === '1' ) {
-  	drawFunction = drawOne;
+  	drawFunction = drawlivingRoom;
   }
   else if( key === '2' ) {
-  	drawFunction = drawTwo;
+  	drawFunction = drawbedRoom;
   }
   else if( key === '3' ) {
-  	drawFunction = drawThree;
+  	drawFunction = drawOffice;
   }
   else if( key === '4' ) {
-  	drawFunction = drawFour;
+  	drawFunction = drawdiningRoom;
   }
   else if( key === '5' ) {
-  	drawFunction = drawFive;
+  	drawFunction = drawbathRoom;
   }
-  else if( key == 's') {
-    drawFunction = drawSplash; 
-  }
-  else if( key == 'i'){
-  	drawFunction = drawInstructions;
+  else if( key == '6') {
+    drawFunction = drawgarage; 
   }
 }
 

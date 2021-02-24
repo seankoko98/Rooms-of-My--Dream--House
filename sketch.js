@@ -59,36 +59,20 @@ function preload() {
   garageAssets[1] = loadImage('assets/garage_tesla.png');
 }
 
-
-function loadInstructionsArray() {
-  instructions[0] = "Press 1 for relaxing"; 
-  instructions[1] = "Press 2 for enlightening"; 
-  instructions[2] = "Press 3 for calm"; 
-  instructions[3] = "Press 4 for cheerful";
-  instructions[4] = "Press 5 for comforting"
-  instructions[5] = "Press s for the mood states splash screen"; 
-  instructions[6] = "When on the splash screen click to get the instructions screen or press i"; 
-}
-
 // Center drawing, drawFunction will be one for default
 function setup() {
   createCanvas(1280, 800);
 
-// loading all arrays 
-  loadInstructionsArray(); 
-  midX = width/2;
-  startY = 60;
-
-  // Center our drawing objects
+// Center our drawing objects
   imageMode(CENTER);
   textAlign(CENTER);
   textSize(24);
 
-  // set to one for startup
+// set to one for startup
   drawFunction = drawlivingRoom;
 }
 
-  //Very simple, sets the background color and calls your state machine function
+//calls state machine function
 function draw() {
   drawFunction();
 }
@@ -131,29 +115,54 @@ drawgarage = function() {
 
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
-  if( key === '1' ) {
-  	drawFunction = drawlivingRoom;
+//living room nav options
+  if( drawFunction === drawlivingRoom ) {
+    if(key === '4') {
+      drawFunction = drawdiningRoom;
+    }
+    else if(key === '6'){
+      drawFunction = drawgarage;
   }
-  else if( key === '2' ) {
-  	drawFunction = drawbedRoom;
+}
+//bedroom nav options
+  if( drawFunction === drawbedRoom ) {
+    if(key === '5') {
+      drawFunction = drawbathRoom;
+    }
   }
-  else if( key === '3' ) {
-  	drawFunction = drawOffice;
+//office room nav options
+  if( drawFunction === drawOffice ) {
+    if(key === '4') {
+      drawFunction = drawdiningRoom;
+    }
+    else if(key === '5'){
+      drawFunction = drawbathRoom;
   }
-  else if( key === '4' ) {
-  	drawFunction = drawdiningRoom;
-  }
-  else if( key === '5' ) {
-  	drawFunction = drawbathRoom;
-  }
-  else if( key == '6') {
-    drawFunction = drawgarage; 
+}
+//dining room nav options
+  if( drawFunction === drawdiningRoom ) {
+    if(key === '1') {
+      drawFunction = drawlivingRoom;
+    }
+    else if(key === '3'){
+      drawFunction = drawOffice;
   }
 }
 
-function mousePressed() {
-  // only change state if we are in splash screen
-  if( drawFunction === drawSplash ) {
-    drawFunction = drawInstructions;
+//bathroom nav options
+  if( drawFunction === drawbathRoom ) {
+    if(key === '2') {
+      drawFunction = drawbedRoom;
+    }
+    else if(key === '3'){
+      drawFunction = drawOffice;
   }
+}
+ 
+//garage nav options
+  if( drawFunction === drawgarage ) {
+    if(key === '1') {
+      drawFunction = drawlivingRoom;
+    }
+}
 }

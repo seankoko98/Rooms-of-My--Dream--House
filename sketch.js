@@ -3,8 +3,7 @@
 	by Sean Ko
 
 ------------------------------------------------------------------------------------
-	Notes:
-	- this project includes arrays, state machines, and practice placing pngs in each state. 
+	Take a tour of my minimalistic eco-friendly and plant-friendly home through simple states (rooms)!
 
 
 ***********************************************************************************/
